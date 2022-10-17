@@ -1,9 +1,12 @@
 body{
     margin: 0;
     padding: 0;
-    font-size: 16pt; /* test for this! Make all sizes em or rem */
+    font-size: 16pt; 
+    /* Editing the body element to use the Poppins font */
     font-family: "Poppins", sans-serif;
+    /* Background Image */
     background-image: url("../images/concrete_seamless.png");
+    /* Background Color Backup */
     background-color: white;
   }
   
@@ -108,7 +111,9 @@ body{
     text-align: center;
   }
 
-  /* my edits here */
+  /* MY EDITS HERE */
+
+  /* Animating logo with keyframes */
 
   header img {
     animation-name: move;
@@ -123,11 +128,15 @@ body{
       to { opacity: 1; }
   }
 
+  /* Edit CSS Header Tag with flex */
+
   header{
     flex: display;
     justify-content: center;
     text-align: center;
   }
+  
+  /* style ONLY those header elements that are direct children of a card class */
 
   .card > header{
     background: #288088;
@@ -138,14 +147,15 @@ body{
     
   }
 
-  /* Style the images in the gallery class. These elements will have a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px.  */
-  /* step 1 & 7 */
+  /* Style the images in the gallery class */
 
   .gallery img{
     border: solid 10px #50C7C7;
     margin: 10px 10px 10px 10px;
     width: 300px;
   }
+
+  /* Edit CSS for Card */
 
   .card {
     border-top-left-radius: 50px;
@@ -156,35 +166,58 @@ body{
 
   }
 
+  /* Edit CSS Nav_links to use flex */
+
   .nav_links {
     display: flex;
-    flex-direction: column;;
-
+    flex-direction: column;
   }
 
-  .nav_links:visited {
-    color: blue;
-  }
-
+  /* Edit CSS Gallery to use flex */
+  
   .gallery {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 
+  /* Justify Content for last gallery img */
+
   .gallery:last-child{
     justify-content: center;
   }
   
+  /* Edit CSS for pricing */
+
   .pricing {
-    min-height: 475 px;
+    min-height: 475px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;;
+    justify-content: center;
+  }
+
+  /* Style Links to not have color when visited */
+  .nav_item:visited
+  {
+    color: #3366CC;
   }
 
   @media only screen and (min-width: 900px)
   {
+      /* make logo as far left as possible */
+      header img {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;   
+      }
+
+      /* move links to side */
+      .nav_links {
+        display: flex;
+        justify-content: right;
+        flex-direction: row;
+      }
+
       .pricing {
         display: flex;
         flex-basis: 275px;
@@ -194,9 +227,13 @@ body{
         display: flex;
         flex-basis: 275px;
       }
+
+      /* header {
+        position: fixed;
+      } */
   }
 
-  /* reduced motion */
+  /* This is for reduced motion. We should make the animation duratoin 0 seconds, so the animation does not trigger */
   @media screen and (prefers-reduced-motion: reduce)
   {
     header img {
@@ -204,10 +241,59 @@ body{
     }
   }
   
-  @media only screen and (orientation: portrait)
+  @media only print
   {
+
+    /* Add font family and remove background image */
     body {
       font-family: Arial, Helvetica;
+      background-image: none;
+      background-color: whitesmoke;
     }
-    /* background-color:  */
+
+    /* Edit Nav Links with Flex */
+
+    .nav_links {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    /* Edit Flex for pricing and card */
+
+    .pricing{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .card{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    /* Style Card */
+
+    .card > header {
+      background-color: #288088;
+      border: solid 2px #45ADAD;
+    }
+
+    /* Make gallery invisible */
+
+    #gallery {
+      display: none;
+    }
+
+    .gallery {
+      display: none;
+    }
+
+    /* Thumbs Up Emoji */
+
+    .card li:nth-child(2)::after {
+      content: "👍";
+    }
+
   }
